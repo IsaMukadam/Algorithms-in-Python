@@ -1,7 +1,13 @@
 # Can hash
-print(hash(42))
-print(hash(10**100))
-print(hash("apina"))
+print(hash(42)) # 42
+print(hash(10**100)) # 910685213754167845
+print(hash("apina")) # -8392475334940914858
+
+"""
+As the above shows, in Python, the hash value of a small integer is the integer itself. Otherwise, the hash values are random looking numbers.
+The Python data structures based on hashing are usually efficient, and you can assume that an addition, access or removal takes 
+O(1) time. However, there is a possiblity that hashing is slow if the input chosen in a specific way.
+"""
 
 # Can't hash
 # lists = set()
@@ -10,8 +16,6 @@ print(hash("apina"))
 
 lists = {}
 lists["apina"] = [1, 2, 3]
-
-
 
 """
 If you define your own class, you can apply hashing to it by defining the following methods:
@@ -44,5 +48,4 @@ for l in locations:
 # Printing the values
 for l in locations:
     print("x: ", l.x, "y:", l.y)
-
 
