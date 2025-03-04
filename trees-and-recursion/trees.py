@@ -213,29 +213,52 @@ list_employees(staff)
 
 ########### Another example to find out how many Queens's (n) you can place on a 4x4 board ##########################
 
-# Counts the number of queen
+# Counts the number of queens
 def count_queens(n):
     return count(n, 0, [])
 
 
+# Takes in n - size of the board, row - the next empty row and queen - the list of queens already placed
 def count(n, row, queens):
+    # If row is equal to n then return 1
     if row == n:
         return 1
+    # Setting result to 0
     result = 0
 
-    for col in range(n):
-        attacks = [attack(queen, (row, col)) for queen in queens]
-        if not any(attacks):
-            result += count(n, row + 1, queens + [(row, col)])
+    # Going through each column in board
+    for col in range(n): 
+        # Returns a list of attacks
+        attacks = [attack(queen, (row, col)) for queen in queens] 
+        if not any(attacks): 
+            result += count(n, row + 1, queens + [(row, col)]) 
     return result
 
+# Debug runthrough of count method for loop
+# 230: (1) col = 0, n = 2 
+#      (2) col = 1, n = 2 
+# 232: (1) row = 0, col = 0, queens = [] 
+#      (2) row = 1, col = 0, queens = [(0, 0)] 
+#      (3) attacks = [True], row = 1, col = 1, queens = [(0, 0)]
+# 233: (1) attacks = [] 
+#      (2) attacks = [True] 
+#      (3) attacks = [True] 
+# 234: (1) result = 0, n = 2, queens = [], row = 0, col = 0 
+#      (2) result = 0, n = 2, queens = [], row = 0, col = 1
+# 235: (1) result = 0
+#      (2) result = 0
+
+# Handles the attack checks. Takes in queen1 and queen2 
 def attack(queen1, queen2):
+    # If either x or y co-ords for queen1 or queen2 match then it returns true for attack
     if queen1[0] == queen2[0] or queen1[1] == queen2[1]:
         return True
     if abs(queen1[0] - queen2[0]) == abs(queen1[1] - queen2[1]):
         return True
-    return False
+    # Returns false if either of the above if statements aren't True
+    return False  
 
-print(count_queens(2))
-print(count_queens(4))
-print(count_queens(8))
+# Printing for different board sizes
+print(count_queens(2)) # 0
+print(count_queens(4)) # 2
+print(count_queens(8)) # 92
