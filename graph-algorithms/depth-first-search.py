@@ -6,7 +6,7 @@
 
 # Define the DFS class
 class DFS:
-    # Constructor to initialize the graph with given nodes
+    # Constructor to initialise the graph with given nodes
     def __init__(self, nodes):
         self.nodes = nodes  # Store the list of nodes
         # Create an adjacency list where each node maps to an empty list (no edges yet)
@@ -29,7 +29,7 @@ class DFS:
 
     # Method to start the DFS traversal
     def search(self, start_node):
-        self.visited = set()  # Initialize an empty set to track visited nodes
+        self.visited = set()  # Initialise an empty set to track visited nodes
         self.visit(start_node)  # Begin DFS from the start node
         
 

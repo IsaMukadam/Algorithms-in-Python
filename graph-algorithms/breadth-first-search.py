@@ -8,7 +8,7 @@
 class BFS:
     def __init__(self, nodes):
         """
-        Constructor to initialize the graph.
+        Constructor to initialise the graph.
 
         :param nodes: A list of nodes in the graph.
         """
@@ -35,8 +35,10 @@ class BFS:
         """
         visited = set()  # Set to keep track of visited nodes
 
-        queue = [start_node]  # Initialize the queue with the start node
+        queue = [start_node]  # Initialise the queue with the start node
         visited.add(start_node)  # Mark the start node as visited
+
+        print("Graph:", self.graph)
 
         # Iterate through the queue (BFS traversal)
         for node in queue:
@@ -45,6 +47,7 @@ class BFS:
                 if next_node not in visited:  # If the neighbor hasn't been visited
                     queue.append(next_node)  # Add it to the queue for future processing
                     visited.add(next_node)  # Mark it as visited
+                    print("Visited:", visited)
 
         return visited  # Return the set of visited nodes
 
@@ -59,4 +62,4 @@ b.add_edge(2,5)
 b.add_edge(3,4)
 b.add_edge(4,5)
 
-print(b.search(1))
+print(b.search(1)) # {1, 2, 3, 4, 5}
