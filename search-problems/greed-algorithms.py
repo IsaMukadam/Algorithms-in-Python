@@ -4,7 +4,7 @@
 # For example, when x = 13, the desired answer is 4, because we can choose
 # the coins 1,2,5,5 and there is no solution with fewer coins.
 
-
+# BRUTE FORCE METHOD
 def find_coins(x):
     # Initialize a list called 'solutions' with an empty list inside.
     # This will keep track of the different ways to make change for the amount 'x'.
@@ -24,8 +24,7 @@ def find_coins(x):
 
 print(find_coins(3))
 
-###################################### ALTERNATIVE ################################################
-
+# ALTERNATIVE BRUTE FORCE METHOD 
 def find_coins(x):
     count = 0
     for coin in [5, 2, 1]:
@@ -33,6 +32,8 @@ def find_coins(x):
             x -= coin
             count += 1
     return count
+
+print(find_coins(3))
 
 ####################################### ALGORITHM CHECKING #############################################
 
