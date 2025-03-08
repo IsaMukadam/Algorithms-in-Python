@@ -26,14 +26,28 @@ print(find_coins(3))
 
 # ALTERNATIVE BRUTE FORCE METHOD 
 def find_coins(x):
-    count = 0
-    for coin in [5, 2, 1]:
-        while coin <= x:
-            x -= coin
-            count += 1
-    return count
+    """
+    Finds the minimum number of coins needed to make up the given amount `x`
+    using denominations of 5, 2, and 1.
 
-print(find_coins(3))
+    Args:
+    x (int): The amount to be converted into coins.
+
+    Returns:
+    int: The minimum number of coins required.
+    """
+    count = 0  # Initialize coin counter
+    
+    # Iterate through the largest to smallest coin denominations
+    for coin in [5, 2, 1]:
+        while coin <= x:  # While we can still use this coin
+            x -= coin  # Deduct the coin value from the total amount
+            count += 1  # Increase the count of coins used
+            
+    return count  # Return the minimum number of coins
+
+# Example usage
+print(find_coins(3))  # Expected output: 2 (2 + 1)
 
 ####################################### ALGORITHM CHECKING #############################################
 
@@ -56,15 +70,18 @@ def find_coins_greedy(x):
             count += 1
     return count
 
-x = 1
+x = 1  # Start checking from 1
+
 while True:
-    result_brute = find_coins_brute(x)
-    result_greedy = find_coins_greedy(x)
+    # Compute the number of coins using two different methods
+    result_brute = find_coins_brute(x)  # Brute-force approach
+    result_greedy = find_coins_greedy(x)  # Greedy approach
 
+    # Check if both methods produce different results
     if result_brute != result_greedy:
-        print("different answer for", x, "coins")
-        print("brute:", result_brute)
-        print("greedy:", result_greedy)
-        break
+        print("Different answer for", x, "coins")
+        print("Brute-force result:", result_brute)
+        print("Greedy result:", result_greedy)
+        break  # Stop execution when a discrepancy is found
 
-    x += 1
+    x += 1  # Increment x and check the next number
