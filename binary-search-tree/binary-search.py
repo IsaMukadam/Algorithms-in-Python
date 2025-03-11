@@ -19,7 +19,9 @@ class TreeSet:
                 return
             if node.value > value:
                 if not node.left:
-
+                    node.left = Node(value)
+                    # Continue here
+                
 
 
 
